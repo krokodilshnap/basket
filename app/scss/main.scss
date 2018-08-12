@@ -1,1 +1,18 @@
 @charset "utf-8";
+
+@import "pages/home.scss";
+@import "components/smartGrid.scss";
+
+@include reset();
+
+body {
+  padding: 30px;
+  font-family: "Arial";
+
+}
+
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+
