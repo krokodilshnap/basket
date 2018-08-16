@@ -1,7 +1,9 @@
 function SmartBasket(options) {
     var wrapper, art, picture, name, amount, mark, price, submit, currency, basket;
     var data;
+    var basketItemId = "smartBasketItem";
     var basket = document.querySelector(options.basket);
+
     countBasket();
 
     document.onclick = function(event) {
@@ -16,30 +18,35 @@ function SmartBasket(options) {
             submit = wrapper.querySelector(options.submitBtn);
             currency = wrapper.querySelector(options.currency);
 
-        }
+            data = {
+                art: art.textContent,
+                name: name.textContent
+            };
 
-        data = {
-            art: art.textContent,
-            name: name.textContent,
-        };
+
+
+        }
 
         if (event.target != submit) return;
 
-        artToBasket();
+        dataToBasket();
+
+        countBasket();
 
 
     }
 
-    function artToBasket() {
+    function dataToBasket() {
         toBasket(data);
-
     }
+
+    // Возвращает количество итемов в LocalStorage
 
     function localStorageCount() {
         var localStorageItems = 0;
 
         for (var key in localStorage) {
-            if (key.indexOf('smartBasketItem') != -1) {
+            if (key.indexOf(basketItemId) != -1) {
                 localStorageItems++;
             }
         }
@@ -48,15 +55,41 @@ function SmartBasket(options) {
 
     }
 
+    //Подсчет количества итемов в корзине
+
     function countBasket() {
         basket.innerHTML = localStorageCount();
     }
 
-
+    
+    // Добавление объекта в LocalStorage
 
     function toBasket(object) {
+        console.log(object)
         var str = JSON.stringify(object);
-        localStorage.setItem('smartBasketItem - ' + Math.random(10000), str);
+        localStorage.setItem(basketItemId + ' - ' + Math.random(10000), str);
+        compareObjects();
+    }
+
+    function compareObjects() {
+        var buffer = {};
+
+        for (var key in localStorage) {
+            if (key.indexOf(basketItemId) != -1) {
+                var itemDetails = JSON.parse(localStorage[key]);
+                buffer[key] = itemDetails;
+            }
+        }
+
+        for (var key in buffer) {
+            for (var item in data) {
+                console.log(buffer[key][item]);
+            }
+        }
+
+
+        console.log(buffer);
+
     }
 
 }
