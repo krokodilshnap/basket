@@ -42,7 +42,7 @@ function SmartBasket(options) {
         }
 
         if (target == clearBtn) {
-            clearAllBasket(target);
+            clearAllBasket();
             countBasket();
         }
 
@@ -65,7 +65,7 @@ function SmartBasket(options) {
     }
 
     //Очистка всей корзины
-    function clearAllBasket(button) {
+    function clearAllBasket() {
         for (var key in localStorage) {
             if (key.indexOf(basketItemId) != -1) {
                 localStorage.removeItem(key);
@@ -146,9 +146,12 @@ function SmartBasket(options) {
 
         }
 
+        clearAllBasket();
+
 
         for (var k in buffer) {
             var str = JSON.stringify(buffer[k]);
+            console.log(k);
 
             localStorage.setItem('' + k, str);
         }
