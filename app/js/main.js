@@ -5,7 +5,11 @@ function SmartBasket(options) {
     var basket = document.querySelector(options.basket);
     var clearBtn = document.querySelector(options.clearBtn);
 
+    console.log(options)
+
     countBasket();
+
+
 
     document.onclick = function(event) {
         var target = event.target;
@@ -34,7 +38,7 @@ function SmartBasket(options) {
                     picture: getPictureUrl(picture)
                 },
                 total: {
-                    amount: +amount.value
+                    amount: parseFloat(amount.value)
                 }
 
             };
@@ -120,6 +124,22 @@ function SmartBasket(options) {
     //Получаем только уникальные объекты из LocalStorage, плюсуем количество и записываем обратно
 
     function getUniqueItems() {
+
+        var buffer = getLocalBuffer();
+
+        clearAllBasket();
+
+
+        for (var k in buffer) {
+            var str = JSON.stringify(buffer[k]);
+            console.log(k);
+
+            localStorage.setItem('' + k, str);
+        }
+
+    }
+
+    function getLocalBuffer() {
         var buffer = {};
 
         for (var key in localStorage) {
@@ -146,16 +166,35 @@ function SmartBasket(options) {
 
         }
 
-        clearAllBasket();
+        return buffer;
+    }
 
+    function addToBasketContainer(options) {
+        var basketRow = document.querySelector('.basket-table-row');
 
-        for (var k in buffer) {
-            var str = JSON.stringify(buffer[k]);
-            console.log(k);
+        var numberContainer = basketRow.querySelector(options[numberContainer]),
+            artContainer = basketRow.querySelector(options[artContainer]),
+            picContainer = basketRow.querySelector(options[picContainer]),
+            nameContainer = basketRow.querySelector(options[nameContainer]),
+            markContainer = basketRow.querySelector(options[markContainer]),
+            priceContainer = basketRow.querySelector(options[priceContainer]),
+            amountContainer = basketRow.querySelector(options[amountContainer]),
+            sumContainer = basketRow.querySelector(options[sumContainer]),
+            deleteContainer = basketRow.querySelector(options[deleteContainer]);
 
-            localStorage.setItem('' + k, str);
+        var buffer = getLocalBuffer();
+        console.log(buffer);
+
+        for (var key in buffer) {
+            for (var item in buffer[key]) {
+                //buffer[key].
+            }
         }
+
 
     }
 
+    addToBasketContainer(options);
+
 }
+

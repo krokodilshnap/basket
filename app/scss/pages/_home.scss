@@ -1,15 +1,21 @@
 @charset "utf-8";
 
 .cart {
-  -webkit-box-shadow: 0px 0px 75px -3px rgba(0,0,0,0.55);
-  -moz-box-shadow: 0px 0px 75px -3px rgba(0,0,0,0.55);
-  box-shadow: 0px 0px 75px -3px rgba(0,0,0,0.55);
+  -webkit-box-shadow: 0px 0px 35px -3px rgba(0,0,0,0.34);
+  -moz-box-shadow: 0px 0px 35px -3px rgba(0, 0, 0, 0.34);
+  box-shadow: 0px 0px 35px -3px rgba(0, 0, 0, 0.34);
   border: 1px solid #bfbfbf;
   width: 250px;
   max-width: 320px;
   display: flex;
   flex-direction: column;
   position: relative;
+  margin-bottom: 30px;
+
+  @include col();
+  @include size(4);
+  @include size-md(6);
+  @include size-sm(12);
 
   &-art {
     display: inline;
@@ -17,13 +23,14 @@
     top: 5px;
     left: 5px;
     padding: 5px 10px;
-    color: #1e1e1e;
+    color: #fff;
     background-color: rgba(90, 90, 90, 0.61);
     border-radius: 3px;
     font-size: 12px;
 
     &__value {
       font-weight: 600;
+      color: #fff;
     }
 
   }
@@ -93,14 +100,36 @@
 
 }
 
+.clear-basket {
+  &__btn {
+    width: 100%;
+    border: 0;
+    margin-top: 10px;
+    padding: 15px 10px;
+    background-color: #dbdbdb;
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+    font-size: 14px;
+
+    &:hover {
+      background-color: #c4c4c4;
+    }
+  }
+}
+
 .basket {
   padding: 15px 10px;
   border: 1px solid #bfbfbf;
-  box-shadow: 0px 0px 15px -3px rgba(0,0,0,0.55);
+  box-shadow: 0px 0px 15px -3px rgba(0, 0, 0, 0.4);
   background-color: #BFBFBF;
   text-align: center;
   color: #fff;
   display: inline-block;
+  width: 100%;
+  font-size: 14px;
+  display: block;
+  text-decoration: none;
 
   &__count {
     font-weight: 600;
@@ -108,10 +137,36 @@
 }
 
 .container {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  @include row-flex();
 }
 
+.carts {
+  width: 80%;
+  @include row-flex();
+  margin-right: 30px;
+
+
+  @include sm-block() {
+    width: 60%;
+    justify-content: center;
+  }
+}
+
+.buttons {
+  width: calc(20% - 30px);
+
+  @include sm-block() {
+    width: calc(40% - 30px);
+  }
+}
+//.carts {
+//  @include col();
+//  @include size(10);
+//  @include row-flex();
+//}
+//
+//.buttons {
+//  @include col();
+//  @include size(2);
+//}
 

@@ -1,0 +1,14 @@
+@charset "utf-8";
+
+.basket-table {
+  border-collapse: collapse;
+  thead {
+    td {
+      padding: 15px;
+      font-size: 12px;
+      font-family: Arial;
+      border: 1px solid rgba(158, 193, 163, 0.72);
+      font-weight: 600;
+    }
+  }
+}
