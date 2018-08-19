@@ -57,7 +57,10 @@ function SmartBasket(options) {
 
         countBasket();
 
+
+
         addToBasketContainer(options);
+
 
 
     };
@@ -169,14 +172,16 @@ function SmartBasket(options) {
     }
 
 
-    //Удаление всех итемов из таблицы корзины
+    //Промежуточная функция удаления всех итемов из таблицы корзины
+    //Используется при динамическом добавлении по клику
+    //Не очищает localStorage
     function deleteAllItems() {
         var allItems = document.querySelectorAll('.basket-table-row');
 
         allItems.forEach(function(item, i) {
-
-               console.log(item);
-
+            if (i !== 0) {
+                item.parentNode.removeChild(item);
+            }
         });
     }
 
@@ -184,6 +189,8 @@ function SmartBasket(options) {
     function addToBasketContainer(options) {
 
         var buffer = getLocalBuffer();
+        deleteAllItems();
+
 
         for (var key in buffer) {
             var basketRow = document.querySelector('.basket-table-row');
