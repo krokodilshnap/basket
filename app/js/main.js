@@ -170,16 +170,7 @@ function SmartBasket(options) {
     function addToBasketContainer(options) {
         var basketRow = document.querySelector('.basket-table-row');
 
-        console.log(options.numberContainer)
-
-
         var numberContainer = basketRow.querySelector(options['numberContainer']),
-            art = basketRow.querySelector(options['artContainer']),
-            picture = basketRow.querySelector(options['picContainer']),
-            name = basketRow.querySelector(options['nameContainer']),
-            mark = basketRow.querySelector(options['markContainer']),
-            price = basketRow.querySelector(options['priceContainer']),
-            amount = basketRow.querySelector(options['amountContainer']),
             sumContainer = basketRow.querySelector(options['sumContainer']),
             deleteContainer = basketRow.querySelector(options['deleteContainer']);
 
@@ -187,16 +178,16 @@ function SmartBasket(options) {
             characters: {
                 art: basketRow.querySelector(options['artContainer']),
                 name: basketRow.querySelector(options['nameContainer']),
-                mark: getSelectedMark(mark),
-                price: price.innerHTML
+                mark: basketRow.querySelector(options['markContainer']),
+                price: basketRow.querySelector(options['priceContainer'])
             },
             add: {
                 picture: basketRow.querySelector(options['picContainer'])
             },
             total: {
-                amount: parseFloat(amount.value)
+                amount: basketRow.querySelector(options['amountContainer'])
             }
-        }
+        };
 
         var buffer = getLocalBuffer();
         console.log(buffer);
@@ -205,12 +196,12 @@ function SmartBasket(options) {
         for (var key in buffer) {
             for (var a in buffer[key]) {
                 for (var b in buffer[key][a]) {
-                    b.innerHTML = buffer[key][a][b];
+                    data[a][b].innerHTML = buffer[key][a][b];
                 }
             }
         }
 
-        console.log(art)
+
 
 
 
