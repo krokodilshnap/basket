@@ -57,6 +57,8 @@ function SmartBasket(options) {
 
         countBasket();
 
+        addToBasketContainer(options);
+
 
     };
 
@@ -128,7 +130,6 @@ function SmartBasket(options) {
 
         clearAllBasket();
 
-
         for (var k in buffer) {
             var str = JSON.stringify(buffer[k]);
 
@@ -167,50 +168,62 @@ function SmartBasket(options) {
         return buffer;
     }
 
+
+    //Удаление всех итемов из таблицы корзины
+    function deleteAllItems() {
+        var allItems = document.querySelectorAll('.basket-table-row');
+
+        allItems.forEach(function(item, i) {
+
+               console.log(item);
+
+        });
+    }
+
+    //Добавление итемов в таблицу корзины
     function addToBasketContainer(options) {
-        var basketRow = document.querySelector('.basket-table-row');
-
-        var numberContainer = basketRow.querySelector(options['numberContainer']),
-            sumContainer = basketRow.querySelector(options['sumContainer']),
-            deleteContainer = basketRow.querySelector(options['deleteContainer']);
-
-        var data = {
-            characters: {
-                art: basketRow.querySelector(options['artContainer']),
-                name: basketRow.querySelector(options['nameContainer']),
-                mark: basketRow.querySelector(options['markContainer']),
-                price: basketRow.querySelector(options['priceContainer'])
-            },
-            add: {
-                picture: basketRow.querySelector(options['picContainer'])
-            },
-            total: {
-                amount: basketRow.querySelector(options['amountContainer'])
-            }
-        };
 
         var buffer = getLocalBuffer();
-        console.log(buffer);
-
 
         for (var key in buffer) {
+            var basketRow = document.querySelector('.basket-table-row');
+
+            var row = basketRow.cloneNode(true);
+
+            var numberContainer = row.querySelector(options['numberContainer']),
+                sumContainer = row.querySelector(options['sumContainer']),
+                deleteContainer = row.querySelector(options['deleteContainer']);
+
+            var data = {
+                characters: {
+                    art: row.querySelector(options['artContainer']),
+                    name: row.querySelector(options['nameContainer']),
+                    mark: row.querySelector(options['markContainer']),
+                    price: row.querySelector(options['priceContainer'])
+                },
+                add: {
+                    picture: row.querySelector(options['picContainer'])
+                },
+                total: {
+                    amount: row.querySelector(options['amountContainer'])
+                }
+            };
+
             for (var a in buffer[key]) {
                 for (var b in buffer[key][a]) {
                     data[a][b].innerHTML = buffer[key][a][b];
                 }
             }
-            basketRow.parentNode.appendChild(basketRow);
+
+            basketRow.parentNode.appendChild(row);
         }
-
-
-
-
 
 
 
     }
 
     addToBasketContainer(options);
+
 
 }
 
