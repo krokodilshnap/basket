@@ -175,6 +175,16 @@
   text-align: center;
 }
 
+.basket-table tbody tr,
+.basket-table tbody td {
+  border: 1px solid rgba(158, 193, 163, 0.72);
+}
+
+.basket-table tbody td {
+  padding: 15px 0;
+  text-align: center;
+}
+
 body,
 div,
 dl,

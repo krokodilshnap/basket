@@ -195,8 +195,11 @@ function SmartBasket(options) {
         for (var key in buffer) {
             var basketRow = document.querySelector('.basket-table-row');
 
+
             var row = basketRow.cloneNode(true);
 
+
+;
             var numberContainer = row.querySelector(options['numberContainer']),
                 sumContainer = row.querySelector(options['sumContainer']),
                 deleteContainer = row.querySelector(options['deleteContainer']);
@@ -225,7 +228,7 @@ function SmartBasket(options) {
             basketRow.parentNode.appendChild(row);
         }
 
-
+        basketRow.style.display = "none";
 
     }
 
