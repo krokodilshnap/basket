@@ -163,14 +163,16 @@
 
 .basket-table {
   border-collapse: collapse;
+  width: 100%;
 }
 
 .basket-table thead td {
-  padding: 15px;
+  padding: 15px 0;
   font-size: 12px;
   font-family: Arial;
   border: 1px solid rgba(158, 193, 163, 0.72);
   font-weight: 600;
+  text-align: center;
 }
 
 body,

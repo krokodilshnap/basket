@@ -1,11 +1,10 @@
 function SmartBasket(options) {
     var wrapper, art, picture, name, amount, mark, price, submit, currency, basket, clearBtn;
-    var data;
+    var data = {};
     var basketItemId = "smartBasketItem";
     var basket = document.querySelector(options.basket);
     var clearBtn = document.querySelector(options.clearBtn);
 
-    console.log(options)
 
     countBasket();
 
@@ -49,6 +48,8 @@ function SmartBasket(options) {
             clearAllBasket();
             countBasket();
         }
+        console.log(data)
+
 
         if (target != submit) return;
 
@@ -57,8 +58,7 @@ function SmartBasket(options) {
         countBasket();
 
 
-    }
-
+    };
 
 
     // Получение картинки из background
@@ -122,7 +122,6 @@ function SmartBasket(options) {
     }
 
     //Получаем только уникальные объекты из LocalStorage, плюсуем количество и записываем обратно
-
     function getUniqueItems() {
 
         var buffer = getLocalBuffer();
@@ -132,7 +131,6 @@ function SmartBasket(options) {
 
         for (var k in buffer) {
             var str = JSON.stringify(buffer[k]);
-            console.log(k);
 
             localStorage.setItem('' + k, str);
         }
@@ -172,24 +170,50 @@ function SmartBasket(options) {
     function addToBasketContainer(options) {
         var basketRow = document.querySelector('.basket-table-row');
 
-        var numberContainer = basketRow.querySelector(options[numberContainer]),
-            artContainer = basketRow.querySelector(options[artContainer]),
-            picContainer = basketRow.querySelector(options[picContainer]),
-            nameContainer = basketRow.querySelector(options[nameContainer]),
-            markContainer = basketRow.querySelector(options[markContainer]),
-            priceContainer = basketRow.querySelector(options[priceContainer]),
-            amountContainer = basketRow.querySelector(options[amountContainer]),
-            sumContainer = basketRow.querySelector(options[sumContainer]),
-            deleteContainer = basketRow.querySelector(options[deleteContainer]);
+        console.log(options.numberContainer)
+
+
+        var numberContainer = basketRow.querySelector(options['numberContainer']),
+            art = basketRow.querySelector(options['artContainer']),
+            picture = basketRow.querySelector(options['picContainer']),
+            name = basketRow.querySelector(options['nameContainer']),
+            mark = basketRow.querySelector(options['markContainer']),
+            price = basketRow.querySelector(options['priceContainer']),
+            amount = basketRow.querySelector(options['amountContainer']),
+            sumContainer = basketRow.querySelector(options['sumContainer']),
+            deleteContainer = basketRow.querySelector(options['deleteContainer']);
+
+        var data = {
+            characters: {
+                art: basketRow.querySelector(options['artContainer']),
+                name: basketRow.querySelector(options['nameContainer']),
+                mark: getSelectedMark(mark),
+                price: price.innerHTML
+            },
+            add: {
+                picture: basketRow.querySelector(options['picContainer'])
+            },
+            total: {
+                amount: parseFloat(amount.value)
+            }
+        }
 
         var buffer = getLocalBuffer();
         console.log(buffer);
 
+
         for (var key in buffer) {
-            for (var item in buffer[key]) {
-                //buffer[key].
+            for (var a in buffer[key]) {
+                for (var b in buffer[key][a]) {
+                    b.innerHTML = buffer[key][a][b];
+                }
             }
         }
+
+        console.log(art)
+
+
+
 
 
     }
