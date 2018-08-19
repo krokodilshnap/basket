@@ -199,6 +199,7 @@ function SmartBasket(options) {
                     data[a][b].innerHTML = buffer[key][a][b];
                 }
             }
+            basketRow.parentNode.appendChild(basketRow);
         }
 
 
