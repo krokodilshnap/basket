@@ -81,6 +81,8 @@ function SmartBasket(options) {
             }
         }
 
+        addToBasketContainer(options);
+
     }
 
     // Получение марки из селекта
@@ -225,10 +227,12 @@ function SmartBasket(options) {
                 }
             }
 
+
+            row.classList.remove('basket-hide');
             basketRow.parentNode.appendChild(row);
         }
 
-        basketRow.style.display = "none";
+        // basketRow.style.display = "none";
 
     }
 
