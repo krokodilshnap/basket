@@ -2,13 +2,11 @@ function SmartBasket(options) {
     var wrapper, art, picture, name, amount, mark, price, submit, currency, basket, clearBtn;
     var data = {};
     var basketItemId = "smartBasketItem";
+    var counter = 1;
     var basket = document.querySelector(options.basket);
     var clearBtn = document.querySelector(options.clearBtn);
-
-
+    
     countBasket();
-
-
 
     document.onclick = function(event) {
         var target = event.target;
@@ -37,7 +35,9 @@ function SmartBasket(options) {
                     picture: getPictureUrl(picture)
                 },
                 total: {
-                    amount: parseFloat(amount.value)
+                    amount: parseFloat(amount.value),
+                    price: getTotalPrice(price, amount)
+                    // number: getNumber()
                 }
 
             };
@@ -48,6 +48,7 @@ function SmartBasket(options) {
             clearAllBasket();
             countBasket();
         }
+
         console.log(data)
 
 
@@ -57,14 +58,22 @@ function SmartBasket(options) {
 
         countBasket();
 
-
-
         addToBasketContainer(options);
 
 
 
     };
 
+    //Номер позиции в таблице
+    // function getNumber() {
+    //     return counter++;
+    // }
+
+    //Получение суммарной цены
+    function getTotalPrice(price, amount) {
+        return parseFloat(price.innerHTML.replace(' ', '')) * parseFloat(amount.value);
+
+    }
 
     // Получение картинки из background
     function getPictureUrl(elem) {
@@ -143,6 +152,7 @@ function SmartBasket(options) {
 
     }
 
+    //Получение js объекта из объекта localStorage
     function getLocalBuffer() {
         var buffer = {};
 
@@ -163,6 +173,7 @@ function SmartBasket(options) {
 
                 if (firstElem == secondElem) {
                     buffer[item].total.amount += buffer[subitem].total.amount;
+                    buffer[item].total.price += buffer[subitem].total.price;
                     delete buffer[subitem];
                 }
 
@@ -170,7 +181,19 @@ function SmartBasket(options) {
 
         }
 
+        getNumber(buffer);
         return buffer;
+    }
+
+
+    //Номер позиции
+    function getNumber(buffer) {
+        var counter = 0;
+        console.log(buffer)
+        for (var key in buffer) {
+            counter++;
+            buffer[key].total.number = counter;
+        }
     }
 
 
@@ -186,6 +209,7 @@ function SmartBasket(options) {
             }
         });
     }
+
 
     //Добавление итемов в таблицу корзины
     function addToBasketContainer(options) {
@@ -217,7 +241,10 @@ function SmartBasket(options) {
                     picture: row.querySelector(options['picContainer'])
                 },
                 total: {
-                    amount: row.querySelector(options['amountContainer'])
+                    amount: row.querySelector(options['amountContainer']),
+                    price: row.querySelector(options['sumContainer']),
+                    number: row.querySelector(options['numberContainer'])
+
                 }
             };
 
