@@ -6,7 +6,7 @@ function SmartBasket(options) {
 
     var basket = document.querySelector(options.basket);
     var clearBtn = document.querySelector(options.clearBtn);
-    var removeBtn = document.querySelector(options.removeContainer).innerHTML;
+    var removeBtn = document.querySelector(options.removeContainer).innerHTML || getRemoveBtn();
     
     countBasket();
 
@@ -37,7 +37,7 @@ function SmartBasket(options) {
                 total: {
                     amount: parseFloat(amount.value),
                     price: getTotalPrice(price, amount),
-                    remove: getRemoveBtn(removeBtn)
+                    remove: removeBtn
                 }
 
             };
@@ -71,19 +71,14 @@ function SmartBasket(options) {
     // }
 
     //Создание кнопки удаления на случай если пользователь не задал собственный шаблон
-    function getRemoveBtn(html) {
-        console.log(html)
-        if (html != "") {
-            return html;
-        } else {
+    function getRemoveBtn() {
             var btn = document.createElement('button');
 
             btn.classList.add('remove-basket-btn');
             btn.setAttribute('type', 'button');
             btn.innerHTML = '×';
 
-            return btn;
-        }
+            return btn.outerHTML;
 
     }
 
@@ -270,6 +265,10 @@ function SmartBasket(options) {
                         div.style.backgroundImage = buffer[key][a][b];
                         data[a][b].appendChild(div);
                         continue;
+                    }
+
+                    if (b == 'remove') {
+
                     }
                     data[a][b].innerHTML = buffer[key][a][b];
                 }
