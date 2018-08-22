@@ -161,6 +161,11 @@
   width: calc(20% - 30px);
 }
 
+.basket-pic-wrapper {
+  width: 200px;
+  height: 200px;
+}
+
 .basket-table {
   border-collapse: collapse;
   width: 100%;
@@ -187,6 +192,16 @@
 
 .basket-hide {
   display: none;
+}
+
+.basket-pic-wrapper {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
 }
 
 body,

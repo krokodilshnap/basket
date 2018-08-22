@@ -3,8 +3,10 @@ function SmartBasket(options) {
     var data = {};
     var basketItemId = "smartBasketItem";
     var counter = 1;
+
     var basket = document.querySelector(options.basket);
     var clearBtn = document.querySelector(options.clearBtn);
+    var removeBtn = document.querySelector(options.removeContainer).innerHTML;
     
     countBasket();
 
@@ -22,8 +24,6 @@ function SmartBasket(options) {
             submit = wrapper.querySelector(options.submitBtn);
             currency = wrapper.querySelector(options.currency);
 
-
-
             data = {
                 characters: {
                     art: art.textContent,
@@ -32,12 +32,12 @@ function SmartBasket(options) {
                     price: price.innerHTML
                 },
                 add: {
-                    picture: getPictureUrl(picture)
+                    picture: picture.style.backgroundImage
                 },
                 total: {
                     amount: parseFloat(amount.value),
-                    price: getTotalPrice(price, amount)
-                    // number: getNumber()
+                    price: getTotalPrice(price, amount),
+                    remove: getRemoveBtn(removeBtn)
                 }
 
             };
@@ -48,6 +48,7 @@ function SmartBasket(options) {
             clearAllBasket();
             countBasket();
         }
+
 
         console.log(data)
 
@@ -69,6 +70,23 @@ function SmartBasket(options) {
     //     return counter++;
     // }
 
+    //Создание кнопки удаления на случай если пользователь не задал собственный шаблон
+    function getRemoveBtn(html) {
+        console.log(html)
+        if (html != "") {
+            return html;
+        } else {
+            var btn = document.createElement('button');
+
+            btn.classList.add('remove-basket-btn');
+            btn.setAttribute('type', 'button');
+            btn.innerHTML = '×';
+
+            return btn;
+        }
+
+    }
+
     //Получение суммарной цены
     function getTotalPrice(price, amount) {
         return parseFloat(price.innerHTML.replace(' ', '')) * parseFloat(amount.value);
@@ -76,11 +94,11 @@ function SmartBasket(options) {
     }
 
     // Получение картинки из background
-    function getPictureUrl(elem) {
-        var style = elem.style.backgroundImage;
-
-        return style.replace(/(url\(|\)|")/g, '');
-    }
+    // function getPictureUrl(elem) {
+    //     var style = elem.style.backgroundImage;
+    //
+    //     return style.replace(/(url\(|\)|")/g, '');
+    // }
 
     //Очистка всей корзины
     function clearAllBasket() {
@@ -174,6 +192,7 @@ function SmartBasket(options) {
                 if (firstElem == secondElem) {
                     buffer[item].total.amount += buffer[subitem].total.amount;
                     buffer[item].total.price += buffer[subitem].total.price;
+                    buffer[item].total.remove = removeBtn;
                     delete buffer[subitem];
                 }
 
@@ -220,15 +239,10 @@ function SmartBasket(options) {
 
         for (var key in buffer) {
             var basketRow = document.querySelector('.basket-table-row');
-
-
             var row = basketRow.cloneNode(true);
 
-
-;
             var numberContainer = row.querySelector(options['numberContainer']),
-                sumContainer = row.querySelector(options['sumContainer']),
-                deleteContainer = row.querySelector(options['deleteContainer']);
+                sumContainer = row.querySelector(options['sumContainer']);
 
             var data = {
                 characters: {
@@ -243,13 +257,20 @@ function SmartBasket(options) {
                 total: {
                     amount: row.querySelector(options['amountContainer']),
                     price: row.querySelector(options['sumContainer']),
-                    number: row.querySelector(options['numberContainer'])
-
+                    number: row.querySelector(options['numberContainer']),
+                    remove: row.querySelector(options['removeContainer'])
                 }
             };
 
             for (var a in buffer[key]) {
                 for (var b in buffer[key][a]) {
+                    if (b == 'picture') {
+                        var div = document.createElement('div');
+                        div.className = "basket-pic-wrapper";
+                        div.style.backgroundImage = buffer[key][a][b];
+                        data[a][b].appendChild(div);
+                        continue;
+                    }
                     data[a][b].innerHTML = buffer[key][a][b];
                 }
             }
@@ -258,8 +279,6 @@ function SmartBasket(options) {
             row.classList.remove('basket-hide');
             basketRow.parentNode.appendChild(row);
         }
-
-        // basketRow.style.display = "none";
 
     }
 
