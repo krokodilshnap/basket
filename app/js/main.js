@@ -42,13 +42,15 @@ function SmartBasket(options) {
 
             };
 
+            if (target != submit) return;
+
+
+
             toBasket(data);
 
             countBasket();
 
             addToBasketContainer(options);
-
-            console.log('document')
 
         }
 
@@ -69,7 +71,7 @@ function SmartBasket(options) {
         console.log(data)
 
 
-        if (target != submit) return;
+
 
 
     };
