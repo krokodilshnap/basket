@@ -6,7 +6,7 @@ function SmartBasket(options) {
 
     var basket = document.querySelector(options.basket);
     var clearBtn = document.querySelector(options.clearBtn);
-    var removeBtn = document.querySelector(options.removeContainer).innerHTML || getRemoveBtn();
+    var removeBtn = document.querySelector(options.removeContainer).firstElementChild || getRemoveBtn();
     
     countBasket();
 
@@ -37,10 +37,18 @@ function SmartBasket(options) {
                 total: {
                     amount: parseFloat(amount.value),
                     price: getTotalPrice(price, amount),
-                    remove: removeBtn
+                    remove: removeBtn.outerHTML
                 }
 
             };
+
+            toBasket(data);
+
+            countBasket();
+
+            addToBasketContainer(options);
+
+            console.log('document')
 
         }
 
@@ -49,26 +57,30 @@ function SmartBasket(options) {
             countBasket();
         }
 
+        console.log(target);
+        console.log(removeBtn);
+
+
+        if (target.classList.contains('remove-basket-btn')) {
+            removeBasketRow(target);
+        }
+
 
         console.log(data)
 
 
         if (target != submit) return;
 
-        dataToBasket();
-
-        countBasket();
-
-        addToBasketContainer(options);
-
-
 
     };
 
-    //Номер позиции в таблице
-    // function getNumber() {
-    //     return counter++;
-    // }
+    //Удаление одной строки из корзины
+    function removeBasketRow(target) {
+        localStorage.removeItem(target.dataset.id);
+        addToBasketContainer(options);
+        countBasket();
+    }
+
 
     //Создание кнопки удаления на случай если пользователь не задал собственный шаблон
     function getRemoveBtn() {
@@ -78,7 +90,7 @@ function SmartBasket(options) {
             btn.setAttribute('type', 'button');
             btn.innerHTML = '×';
 
-            return btn.outerHTML;
+            return btn;
 
     }
 
@@ -116,10 +128,6 @@ function SmartBasket(options) {
         }
     }
 
-    // Добавление всех параметров в корзину
-    function dataToBasket() {
-        toBasket(data);
-    }
 
     // Возвращает количество итемов в LocalStorage
     function localStorageCount() {
@@ -187,7 +195,7 @@ function SmartBasket(options) {
                 if (firstElem == secondElem) {
                     buffer[item].total.amount += buffer[subitem].total.amount;
                     buffer[item].total.price += buffer[subitem].total.price;
-                    buffer[item].total.remove = removeBtn;
+                    // buffer[item].total.remove = removeBtn.outerHTML;
                     delete buffer[subitem];
                 }
 
@@ -203,7 +211,7 @@ function SmartBasket(options) {
     //Номер позиции
     function getNumber(buffer) {
         var counter = 0;
-        console.log(buffer)
+
         for (var key in buffer) {
             counter++;
             buffer[key].total.number = counter;
@@ -268,7 +276,8 @@ function SmartBasket(options) {
                     }
 
                     if (b == 'remove') {
-
+                        data[a][b].firstElementChild.dataset.id = key;
+                        continue;
                     }
                     data[a][b].innerHTML = buffer[key][a][b];
                 }
