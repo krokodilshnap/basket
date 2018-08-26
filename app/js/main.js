@@ -2,6 +2,7 @@ function SmartBasket(options) {
     var wrapper, art, picture, name, amount, mark, price, submit, currency, basket, clearBtn;
     var data = {};
     var basketItemId = "smartBasketItem";
+    var basketTable = document.querySelector('.basket-table-container');
     var counter = 1;
 
     var basket = document.querySelector(options.basket);
@@ -9,6 +10,7 @@ function SmartBasket(options) {
     var removeBtn = document.querySelector(options.removeContainer).firstElementChild || getRemoveBtn();
     
     countBasket();
+    // showEmptyMassage();
 
     document.onclick = function(event) {
         var target = event.target;
@@ -24,15 +26,17 @@ function SmartBasket(options) {
             submit = wrapper.querySelector(options.submitBtn);
             currency = wrapper.querySelector(options.currency);
 
+
             data = {
                 characters: {
                     art: art.textContent,
                     name: name.textContent,
                     mark: getSelectedMark(mark),
-                    price: price.innerHTML
+                    price: price.innerHTML,
+                    currency: currency.innerHTML
                 },
                 add: {
-                    picture: picture.style.backgroundImage
+                    picture: getPictureUrl(picture)
                 },
                 total: {
                     amount: parseFloat(amount.value),
@@ -42,15 +46,17 @@ function SmartBasket(options) {
 
             };
 
+            console.log(getSelectedMark(mark));
+
             if (target != submit) return;
-
-
 
             toBasket(data);
 
             countBasket();
 
             addToBasketContainer(options);
+
+
 
         }
 
@@ -59,20 +65,11 @@ function SmartBasket(options) {
             countBasket();
         }
 
-        console.log(target);
-        console.log(removeBtn);
-
+        console.log(data)
 
         if (target.classList.contains('remove-basket-btn')) {
             removeBasketRow(target);
         }
-
-
-        console.log(data)
-
-
-
-
 
     };
 
@@ -82,6 +79,27 @@ function SmartBasket(options) {
         addToBasketContainer(options);
         countBasket();
     }
+
+    //Получение картинки товара из img
+
+
+    //Сообщение "В корзине пока ничего нет"
+    //basket-table-container обязательный класс для контейнера таблицы корзины
+    // function showEmptyMassage() {
+    //     for (var key in localStorage) {
+    //
+    //         if (!localStorage.hasOwnProperty(key)) continue;
+    //
+    //         if (key.indexOf(basketItemId) != -1) {
+    //             console.log('if')
+    //             basketTable.classList.remove('basket-hide');
+    //
+    //         } else {
+    //             console.log('else')
+    //             basketTable.classList.add('basket-hide');
+    //         }
+    //     }
+    // }
 
 
     //Создание кнопки удаления на случай если пользователь не задал собственный шаблон
@@ -102,12 +120,12 @@ function SmartBasket(options) {
 
     }
 
-    // Получение картинки из background
-    // function getPictureUrl(elem) {
-    //     var style = elem.style.backgroundImage;
-    //
-    //     return style.replace(/(url\(|\)|")/g, '');
-    // }
+    //Получение картинки из background
+    function getPictureUrl(elem) {
+        var style = elem.style.backgroundImage || elem.firstElementChild.src;
+
+        return style.replace(/(url\(|\)|")/g, '');
+    }
 
     //Очистка всей корзины
     function clearAllBasket() {
@@ -123,11 +141,27 @@ function SmartBasket(options) {
 
     // Получение марки из селекта
     function getSelectedMark(elem) {
-        for (var i = 0; i < elem.options.length; i++) {
-            if (elem.options[i].selected) {
-                return elem.options[i].innerHTML;
+        var markOptions = elem.querySelectorAll(options.markOption);
+
+        console.log(markOptions);
+
+        if (markOptions.length != 0) {
+            console.log('if')
+            markOptions.forEach(function(item) {
+               if (item.classList.contains(options.markSelectedClass)) {
+                   console.log(item.innerHTML)
+                   return item.innerHTML;
+               }
+            });
+        } else {
+            console.log('else')
+            for (var i = 0; i < elem.options.length; i++) {
+                if (elem.options[i].selected) {
+                    return elem.options[i].innerHTML;
+                }
             }
         }
+
     }
 
 
@@ -141,8 +175,23 @@ function SmartBasket(options) {
             }
         }
 
+        showEmptyMessage(localStorageItems);
+
         return localStorageItems;
 
+    }
+
+    //Показ сообщения "в корзине пока ничего нет"
+    function showEmptyMessage(localStorageItems) {
+        var emptyMessage = document.querySelector('.empty-basket-message');
+
+        if (localStorageItems == 0) {
+            basketTable.classList.add('basket-hide');
+            emptyMessage.classList.remove('basket-hide');
+        } else {
+            basketTable.classList.remove('basket-hide');
+            emptyMessage.classList.add('basket-hide');
+        }
     }
 
     //Подсчет количества итемов в корзине
@@ -254,7 +303,8 @@ function SmartBasket(options) {
                     art: row.querySelector(options['artContainer']),
                     name: row.querySelector(options['nameContainer']),
                     mark: row.querySelector(options['markContainer']),
-                    price: row.querySelector(options['priceContainer'])
+                    price: row.querySelector(options['priceContainer']),
+                    currency: row.querySelector(options['priceContainer'])
                 },
                 add: {
                     picture: row.querySelector(options['picContainer'])
@@ -269,10 +319,13 @@ function SmartBasket(options) {
 
             for (var a in buffer[key]) {
                 for (var b in buffer[key][a]) {
+                    var span = document.createElement('span');
+                    span.innerHTML = buffer[key]['characters']['currency'];
+
                     if (b == 'picture') {
                         var div = document.createElement('div');
                         div.className = "basket-pic-wrapper";
-                        div.style.backgroundImage = buffer[key][a][b];
+                        div.style.backgroundImage = "url(" + buffer[key][a][b] + ")";
                         data[a][b].appendChild(div);
                         continue;
                     }
@@ -281,6 +334,26 @@ function SmartBasket(options) {
                         data[a][b].firstElementChild.dataset.id = key;
                         continue;
                     }
+
+
+
+                    if (b == 'currency') {
+                        data[a][b].appendChild(span);
+
+                        continue;
+                    }
+
+                    if (b == 'price' && a == 'total') {
+                        data[a][b].innerHTML = buffer[key][a][b];
+                        data[a][b].appendChild(span);
+
+                        continue;
+                    }
+
+                    if (!data[a][b]) {
+                        continue;
+                    }
+
                     data[a][b].innerHTML = buffer[key][a][b];
                 }
             }
@@ -290,9 +363,12 @@ function SmartBasket(options) {
             basketRow.parentNode.appendChild(row);
         }
 
+        // showEmptyMassage();
+
     }
 
     addToBasketContainer(options);
+
 
 
 }
