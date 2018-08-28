@@ -4,6 +4,7 @@ function SmartBasket(options) {
     var basketItemId = "smartBasketItem";
     var basketTable = document.querySelector('.basket-table-container');
     var counter = 1;
+    var sumDefault = "-";
 
     var basket = document.querySelector(options.basket);
     var clearBtn = document.querySelector(options.clearBtn);
@@ -24,7 +25,7 @@ function SmartBasket(options) {
             mark = wrapper.querySelector(options.mark);
             price = wrapper.querySelector(options.price);
             submit = wrapper.querySelector(options.submitBtn);
-            currency = wrapper.querySelector(options.currency);
+            currency = wrapper.querySelector(options.currency) || 0;
 
 
             data = {
@@ -33,7 +34,7 @@ function SmartBasket(options) {
                     name: name.textContent,
                     mark: getSelectedMark(mark),
                     price: price.innerHTML,
-                    currency: currency.innerHTML
+                    currency: getCurrency(currency)
                 },
                 add: {
                     picture: getPictureUrl(picture)
@@ -46,8 +47,6 @@ function SmartBasket(options) {
 
             };
 
-            console.log(getSelectedMark(mark));
-
             if (target != submit) return;
 
             toBasket(data);
@@ -55,8 +54,6 @@ function SmartBasket(options) {
             countBasket();
 
             addToBasketContainer(options);
-
-
 
         }
 
@@ -72,6 +69,11 @@ function SmartBasket(options) {
         }
 
     };
+
+    //Валюта
+    function getCurrency(elem) {
+        return elem ? elem.innerHTML : "";
+    }
 
     //Удаление одной строки из корзины
     function removeBasketRow(target) {
@@ -116,8 +118,16 @@ function SmartBasket(options) {
 
     //Получение суммарной цены
     function getTotalPrice(price, amount) {
-        return parseFloat(price.innerHTML.replace(' ', '')) * parseFloat(amount.value);
+        var totalSum = parseFloat(price.innerHTML.replace(' ', '')) * parseFloat(amount.value);
+        var returnedSum;
 
+        if (isNaN(totalSum)) {
+            returnedSum = sumDefault;
+        } else {
+            returnedSum = parseFloat(price.innerHTML.replace(' ', '')) * parseFloat(amount.value);
+        }
+
+        return returnedSum;
     }
 
     //Получение картинки из background
@@ -141,27 +151,28 @@ function SmartBasket(options) {
 
     // Получение марки из селекта
     function getSelectedMark(elem) {
-        var markOptions = elem.querySelectorAll(options.markOption);
+        var mark;
+        if (elem) {
+            var markOptions = elem.querySelectorAll(options.markOption);
 
-        console.log(markOptions);
-
-        if (markOptions.length != 0) {
-            console.log('if')
-            markOptions.forEach(function(item) {
-               if (item.classList.contains(options.markSelectedClass)) {
-                   console.log(item.innerHTML)
-                   return item.innerHTML;
-               }
-            });
-        } else {
-            console.log('else')
-            for (var i = 0; i < elem.options.length; i++) {
-                if (elem.options[i].selected) {
-                    return elem.options[i].innerHTML;
+            if (markOptions.length != 0) {
+                markOptions.forEach(function(item) {
+                    if (item.classList.contains(options.markSelectedClass)) {
+                        mark = item.innerHTML;
+                    }
+                });
+            } else {
+                for (var i = 0; i < elem.options.length; i++) {
+                    if (elem.options[i].selected) {
+                        mark = elem.options[i].innerHTML;
+                    }
                 }
             }
+        } else {
+            mark = "-";
         }
 
+        return mark;
     }
 
 
@@ -245,7 +256,9 @@ function SmartBasket(options) {
 
                 if (firstElem == secondElem) {
                     buffer[item].total.amount += buffer[subitem].total.amount;
-                    buffer[item].total.price += buffer[subitem].total.price;
+                    if (buffer[subitem].total.price != sumDefault) {
+                        buffer[item].total.price += buffer[subitem].total.price;
+                    }
                     // buffer[item].total.remove = removeBtn.outerHTML;
                     delete buffer[subitem];
                 }
