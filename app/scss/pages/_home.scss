@@ -92,12 +92,12 @@
   }
 
   &-model {
+    padding: 5px 0;
+    background-color: $select-green;
     &__select {
       width: 100%;
-      border-bottom: 5px solid $select-green;
       padding: 5px 0;
       font-size: 14px;
-      border-top: 5px solid $select-green;
     }
   }
 

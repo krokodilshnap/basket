@@ -200,6 +200,40 @@
                     <button class="cart__submit" type="button">Заказать</button>
                 </div>
             </div>
+            <div class="cart">
+                <div class="cart__head">
+                    <div class="cart-art">
+                        <span class="cart-art__text">Арт.</span>
+                        <span class="cart-art__value">12866661</span>
+                    </div>
+                    <div class="cart__pic"
+                         style="background: url(img/macbook.jpg) no-repeat center center; background-size: contain;"></div>
+                </div>
+                <div class="cart__middle">
+                    <div class="cart__name">
+                        MacBook
+                    </div>
+                    <div class="cart-count">
+                        <input type="text" value="1">
+                    </div>
+                    <div class="cart-model">
+                        <select name="cart-model__select" id="select-model" class="cart-model__select">
+                            <option value="Выберите модель" class="cart-model__option" disabled selected>Выберите модель</option>
+                            <option value="Air 2013" class="cart-model__option">Air 2013</option>
+                            <option value="Pro 13'" class="cart-model__option">Pro 13'</option>
+                            <option value="Pro 15'" class="cart-model__option">Pro 15'</option>
+                            <option value="Air 2018" class="cart-model__option">Air 2018</option>
+                        </select>
+                    </div>
+                    <div class="cart-price">
+                        <span class="cart-price__value">99 000</span>
+                        <span class="cart-price__currency">₽</span>
+                    </div>
+                </div>
+                <div class="cart__bottom">
+                    <button class="cart__submit" type="button">Заказать</button>
+                </div>
+            </div>
         </div>
         <div class="buttons">
             <a href="#" class="basket">
@@ -297,7 +331,8 @@
         priceContainer: '.price-container',
         amountContainer: '.amount-container',
         sumContainer: '.sum-container',
-        removeContainer: '.remove-container'
+        removeContainer: '.remove-container',
+        validateByMark: 'on'
     });
 </script>
 </body>

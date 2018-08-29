@@ -164,7 +164,11 @@ function SmartBasket(options) {
             } else {
                 for (var i = 0; i < elem.options.length; i++) {
                     if (elem.options[i].selected) {
-                        mark = elem.options[i].innerHTML;
+                        if (elem.options[i].hasAttribute('disabled')) {
+                            mark = null;
+                        } else {
+                            mark = elem.options[i].innerHTML;
+                        }
                     }
                 }
             }
@@ -213,11 +217,24 @@ function SmartBasket(options) {
     
     // Добавление объекта в LocalStorage
     function toBasket(object) {
+
+        if (object['characters']['mark'] === null && options.validateByMark == "on") {
+            mark.classList.add('basket-error');
+            return;
+        }
+
         var str = JSON.stringify(object);
+
+        if (mark && mark.classList.contains('basket-error')) {
+            mark.classList.remove('basket-error');
+        }
+
 
         localStorage.setItem(basketItemId + ' - ' + Math.random(10000), str);
 
         getUniqueItems();
+
+
     }
 
     //Получаем только уникальные объекты из LocalStorage, плюсуем количество и записываем обратно

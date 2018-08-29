@@ -91,12 +91,15 @@
   font-size: 14px;
 }
 
+.cart-model {
+  padding: 5px 0;
+  background-color: #9EC1A3;
+}
+
 .cart-model__select {
   width: 100%;
-  border-bottom: 5px solid #9EC1A3;
   padding: 5px 0;
   font-size: 14px;
-  border-top: 5px solid #9EC1A3;
 }
 
 .cart__pic img {
@@ -250,6 +253,10 @@
   background-repeat: no-repeat;
   -webkit-background-size: contain;
   background-size: contain;
+}
+
+.basket-error {
+  border: 1px solid red;
 }
 
 .empty-basket-message {
