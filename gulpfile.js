@@ -45,7 +45,15 @@ gulp.task('clear', function () {
     return cache.clearAll();
 });
 
-gulp.task('watch', ['browser-sync', 'sass'], function () {
+gulp.task('plugin-css', function() {
+    return gulp.src('app/scss/smartBasket.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(autoprefixer(['last 15 versions'], {cascade: true}))
+        .pipe(gcmq())
+        .pipe(gulp.dest('app/css'))
+});
+
+gulp.task('watch', ['browser-sync', 'sass', 'plugin-css'], function () {
     gulp.watch('app/scss/**/*.scss', ['sass']);
     gulp.watch('app/*.html', browserSync.reload);
     gulp.watch('app/js/*.js', browserSync.reload);

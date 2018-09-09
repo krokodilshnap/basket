@@ -1,0 +1,59 @@
+@charset "utf-8";
+
+.basket {
+
+  &-pic-wrapper {
+    width: 200px;
+    height: 200px;
+  }
+
+  &-table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 800px;
+    max-width:  1300px;
+    thead {
+      td {
+        padding: 15px 0;
+        font-size: 12px;
+        font-family: $font;
+        border: 1px solid rgba(158, 193, 163, 0.72);
+        font-weight: 600;
+        text-align: center;
+      }
+    }
+
+    tbody {
+      tr, td {
+        border: 1px solid rgba(158, 193, 163, 0.72);
+      }
+
+      td {
+        padding: 15px 0;
+        text-align: center;
+      }
+    }
+  }
+
+  &-hide {
+    display: none;
+  }
+
+  &-result {
+    font-family: "PT Sans";
+    padding-top: 10px;
+    h1 {
+      font-size: 28px;
+      font-weight: 600;
+      flex-basis: 100%;
+      margin-bottom: 10px;
+    }
+  }
+
+}
+
+.table-scroll-container {
+  overflow-x: auto;
+  width: 100%;
+}
+

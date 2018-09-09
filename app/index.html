@@ -1,126 +1,381 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<link rel="stylesheet" href="css/main.css">
-	<title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Document</title>
 </head>
 <body>
-<div class="container">
-<div class="cart">
-	<div class="cart__head">
-		<div class="cart-art">
-			<span class="cart-art__text">Арт.</span>
-			<span class="cart-art__value">1255871</span>
-		</div>
-		<div class="cart__pic" style="background: url(img/iphone-x-space-gray-new-1-500x400.png) no-repeat center center; background-size: contain;"></div>
-	</div>
-	<div class="cart__middle">
-		<div class="cart__name">
-			iPhone
-		</div>
-		<div class="cart-count">
-			<input type="text" value="1">
-		</div>
-		<div class="cart-model">
-			<select name="cart-model__select" id="select-model" class="cart-model__select">
-				<option value="iPhone X" class="cart-model__option">iPhone X</option>
-				<option value="iPhone 8" class="cart-model__option">iPhone 8</option>
-				<option value="iPhone 7" class="cart-model__option">iPhone 7</option>
-				<option value="iPhone 5S" class="cart-model__option">iPhone 5S</option>
-			</select>
-		</div>
-		<div class="cart-price">
-			<span class="cart-price__value">69 000</span>
-			<span class="cart-price__currency">₽</span>
-		</div>
-	</div>
-	<div class="cart__bottom">
-		<button class="cart__submit" type="button">Заказать</button>
-	</div>
-</div>
-	<div class="cart">
-		<div class="cart__head">
-			<div class="cart-art">
-				<span class="cart-art__text">Арт.</span>
-				<span class="cart-art__value">58859871</span>
-			</div>
-			<div class="cart__pic" style="background: url(img/iphone-x-space-gray-new-1-500x400.png) no-repeat center center; background-size: contain;"></div>
-		</div>
-		<div class="cart__middle">
-			<div class="cart__name">
-				iPhone
-			</div>
-			<div class="cart-count">
-				<input type="text" value="1">
-			</div>
-			<div class="cart-model">
-				<select name="cart-model__select" id="select-model" class="cart-model__select">
-					<option value="iPhone X" class="cart-model__option">iPhone X</option>
-					<option value="iPhone 8" class="cart-model__option">iPhone 8</option>
-					<option value="iPhone 7" class="cart-model__option">iPhone 7</option>
-					<option value="iPhone 5S" class="cart-model__option">iPhone 5S</option>
-				</select>
-			</div>
-			<div class="cart-price">
-				<span class="cart-price__value">69 000</span>
-				<span class="cart-price__currency">₽</span>
-			</div>
-		</div>
-		<div class="cart__bottom">
-			<button class="cart__submit" type="button">Заказать</button>
-		</div>
-	</div>
-	<div class="cart">
-		<div class="cart__head">
-			<div class="cart-art">
-				<span class="cart-art__text">Арт.</span>
-				<span class="cart-art__value">1255871</span>
-			</div>
-			<div class="cart__pic" style="background: url(img/iphone-x-space-gray-new-1-500x400.png) no-repeat center center; background-size: contain;"></div>
-		</div>
-		<div class="cart__middle">
-			<div class="cart__name">
-				iPhone
-			</div>
-			<div class="cart-count">
-				<input type="text" value="1">
-			</div>
-			<div class="cart-model">
-				<select name="cart-model__select" id="select-model" class="cart-model__select">
-					<option value="iPhone X" class="cart-model__option">iPhone X</option>
-					<option value="iPhone 8" class="cart-model__option">iPhone 8</option>
-					<option value="iPhone 7" class="cart-model__option">iPhone 7</option>
-					<option value="iPhone 5S" class="cart-model__option">iPhone 5S</option>
-				</select>
-			</div>
-			<div class="cart-price">
-				<span class="cart-price__value">69 000</span>
-				<span class="cart-price__currency">₽</span>
-			</div>
-		</div>
-		<div class="cart__bottom">
-			<button class="cart__submit" type="button">Заказать</button>
-		</div>
-	</div>
+<section class="carts-sec">
+    <div class="container">
+        <div class="carts">
 
-<div class="basket">
-	<span class="basket__text">Корзина (</span>
-	<span class="basket__count">0</span> )
-</div>
-</div>
+            <div class="cart">
+                <div class="cart-sign">/* Товар №1 */</div>
+                <div class="cart__head">
+                    <div class="cart-art">
+                        <span class="cart-art__text">Арт:</span>
+                        <span class="cart-art__value">1255871</span>
+                    </div>
+                    <div class="cart__pic"
+                         style="background: url(img/iphone-x-space-gray-new-1-500x400.png) no-repeat center center; background-size: contain;"></div>
+                </div>
+                <div class="cart__middle">
+                    <div class="cart__name">
+                        iPhone
+                    </div>
+                    <div class="cart-count">
+                        <input type="text" value="1">
+                    </div>
+                    <div class="cart-model">
+                        <select name="cart-model__select" id="select-model" class="cart-model__select">
+                            <option value="iPhone X" class="cart-model__option">iPhone X</option>
+                            <option value="iPhone 8" class="cart-model__option">iPhone 8</option>
+                            <option value="iPhone 7" class="cart-model__option">iPhone 7</option>
+                            <option value="iPhone 5S" class="cart-model__option">iPhone 5S</option>
+                        </select>
+                    </div>
+                    <div class="cart-price">
+                        <span class="cart-price__value">69 000</span>
+                        <span class="cart-price__currency">₽</span>
+                    </div>
+                </div>
+                <div class="cart__bottom">
+                    <button class="cart__submit" type="button">В корзину</button>
+                </div>
+            </div>
+            <div class="cart">
+                <div class="cart-sign">/* Товар №2 */</div>
+                <div class="cart__head">
+                    <div class="cart-art">
+                        <span class="cart-art__text">Арт:</span>
+                        <span class="cart-art__value">58859871</span>
+                    </div>
+                    <div class="cart__pic">
+                        <img src="img/ipad.jpg" alt="">
+                    </div>
+                </div>
+                <div class="cart__middle">
+                    <div class="cart__name">iPad</div>
+                    <div class="cart-count">
+                        <input type="text" value="1">
+                    </div>
+                    <div class="cart-model">
+                        <select name="cart-model__select" id="select-model" class="cart-model__select">
+                            <option value="iPad 1" class="cart-model__option">iPad 1</option>
+                            <option value="iPad 2" class="cart-model__option">iPad 2</option>
+                            <option value="iPad 3" class="cart-model__option">iPad 3</option>
+                            <option value="iPad Mini" class="cart-model__option">iPad Mini</option>
+                        </select>
+                    </div>
+                    <div class="cart-price">
+                        <span class="cart-price__value">50 000</span>
+                        <span class="cart-price__currency">₽</span>
+                    </div>
+                </div>
+                <div class="cart__bottom">
+                    <button class="cart__submit" type="button">В корзину</button>
+                </div>
+            </div>
+            <div class="cart">
+                <div class="cart-sign">/* Товар №3 */</div>
+                <div class="cart__head">
+                    <div class="cart-art">
+                        <span class="cart-art__text">Арт:</span>
+                        <span class="cart-art__value">12866661</span>
+                    </div>
+                    <div class="cart__pic"
+                         style="background: url(img/macbook.jpg) no-repeat center center; background-size: contain;"></div>
+                </div>
+                <div class="cart__middle">
+                    <div class="cart__name">
+                        MacBook
+                    </div>
+                    <div class="cart-count">
+                        <input type="text" value="1">
+                    </div>
+                    <div class="cart-model">
+                        <select name="cart-model__select" id="select-model" class="cart-model__select">
+                            <option value="Air 2013" class="cart-model__option">Air 2013</option>
+                            <option value="Pro 13'" class="cart-model__option">Pro 13'</option>
+                            <option value="Pro 15'" class="cart-model__option">Pro 15'</option>
+                            <option value="Air 2018" class="cart-model__option">Air 2018</option>
+                        </select>
+                    </div>
+                    <div class="cart-price">
+                        <span class="cart-price__value">99 000</span>
+                        <span class="cart-price__currency">₽</span>
+                    </div>
+                </div>
+                <div class="cart__bottom">
+                    <button class="cart__submit" type="button">В корзину</button>
+                </div>
+            </div>
+            <div class="cart">
+                <div class="cart-sign">/* Radio Buttons для выбора модели */</div>
+                <div class="cart__head">
+                    <div class="cart-art">
+                        <span class="cart-art__text">Арт:</span>
+                        <span class="cart-art__value">58859871</span>
+                    </div>
+                    <div class="cart__pic">
+                        <img src="img/ipad.jpg" alt="">
+                    </div>
+                </div>
+                <div class="cart__middle">
+                    <div class="cart__name">iPad</div>
+                    <div class="cart-count">
+                        <input type="text" value="1">
+                    </div>
+                    <div class="cart-model div-models">
+                        <div class="cart-model__select">
+                            <div class="cart-model__option cart-model__div selected">iPad 1</div>
+                            <div class="cart-model__option cart-model__div">iPad 2</div>
+                            <div class="cart-model__option cart-model__div">iPad 3</div>
+                            <div class="cart-model__option cart-model__div">iPad Mini</div>
+                        </div>
+                    </div>
+                    <div class="cart-price">
+                        <span class="cart-price__value">50 000</span>
+                        <span class="cart-price__currency">₽</span>
+                    </div>
+                </div>
+                <div class="cart__bottom">
+                    <button class="cart__submit" type="button">В корзину</button>
+                </div>
+            </div>
+            <div class="cart">
+                <div class="cart-sign">/* Цена по запросу */</div>
+                <div class="cart__head">
+                    <div class="cart-art">
+                        <span class="cart-art__text">Арт:</span>
+                        <span class="cart-art__value">58859871</span>
+                    </div>
+                    <div class="cart__pic">
+                        <img src="img/ipad.jpg" alt="">
+                    </div>
+                </div>
+                <div class="cart__middle">
+                    <div class="cart__name">iPad</div>
+                    <div class="cart-count">
+                        <input type="text" value="1">
+                    </div>
+                    <div class="cart-model">
+                        <select name="cart-model__select" id="select-model" class="cart-model__select">
+                            <option value="iPad 1" class="cart-model__option">iPad 1</option>
+                            <option value="iPad 2" class="cart-model__option">iPad 2</option>
+                            <option value="iPad 3" class="cart-model__option">iPad 3</option>
+                            <option value="iPad Mini" class="cart-model__option">iPad Mini</option>
+                        </select>
+                    </div>
+                    <div class="cart-price">
+                        <span class="cart-price__value">Цена по запросу</span>
+                    </div>
+                </div>
+                <div class="cart__bottom">
+                    <button class="cart__submit" type="button">В корзину</button>
+                </div>
+            </div>
+            <div class="cart">
+                <div class="cart-sign">/* Без выбора модели */</div>
+                <div class="cart__head">
+                    <div class="cart-art">
+                        <span class="cart-art__text">Арт:</span>
+                        <span class="cart-art__value">1255871</span>
+                    </div>
+                    <div class="cart__pic"
+                         style="background: url(img/iphone-x-space-gray-new-1-500x400.png) no-repeat center center; background-size: contain;"></div>
+                </div>
+                <div class="cart__middle">
+                    <div class="cart__name">
+                        iPhone
+                    </div>
+                    <div class="cart-count">
+                        <input type="text" value="1">
+                    </div>
+                    <div class="cart-price">
+                        <span class="cart-price__value">69 000</span>
+                        <span class="cart-price__currency">₽</span>
+                    </div>
+                </div>
+                <div class="cart__bottom">
+                    <button class="cart__submit" type="button">В корзину</button>
+                </div>
+            </div>
+            <div class="cart">
+                <div class="cart-sign">/* По умолчанию модель не выбрана */</div>
+                <div class="cart__head">
+                    <div class="cart-art">
+                        <span class="cart-art__text">Арт:</span>
+                        <span class="cart-art__value">12866661</span>
+                    </div>
+                    <div class="cart__pic"
+                         style="background: url(img/macbook.jpg) no-repeat center center; background-size: contain;"></div>
+                </div>
+                <div class="cart__middle">
+                    <div class="cart__name">
+                        MacBook
+                    </div>
+                    <div class="cart-count">
+                        <input type="text" value="1">
+                    </div>
+                    <div class="cart-model">
+                        <select name="cart-model__select" id="select-model" class="cart-model__select">
+                            <option value="Выберите модель" class="cart-model__option" disabled selected>Выберите модель</option>
+                            <option value="Air 2013" class="cart-model__option">Air 2013</option>
+                            <option value="Pro 13'" class="cart-model__option">Pro 13'</option>
+                            <option value="Pro 15'" class="cart-model__option">Pro 15'</option>
+                            <option value="Air 2018" class="cart-model__option">Air 2018</option>
+                        </select>
+                    </div>
+                    <div class="cart-price">
+                        <span class="cart-price__value">99 000</span>
+                        <span class="cart-price__currency">₽</span>
+                    </div>
+                </div>
+                <div class="cart__bottom">
+                    <button class="cart__submit" type="button">В корзину</button>
+                </div>
+            </div>
+            <div class="cart">
+                <div class="cart-sign">/* Без артикула */</div>
+                <div class="cart__head">
+                    <div class="cart__pic"
+                         style="background: url(img/macbook.jpg) no-repeat center center; background-size: contain;"></div>
+                </div>
+                <div class="cart__middle">
+                    <div class="cart__name">
+                        MacBook
+                    </div>
+                    <div class="cart-count">
+                        <input type="text" value="1">
+                    </div>
+                    <div class="cart-model">
+                        <select name="cart-model__select" id="select-model" class="cart-model__select">
+                            <option value="Air 2013" class="cart-model__option">Air 2013</option>
+                            <option value="Pro 13'" class="cart-model__option">Pro 13'</option>
+                            <option value="Pro 15'" class="cart-model__option">Pro 15'</option>
+                            <option value="Air 2018" class="cart-model__option">Air 2018</option>
+                        </select>
+                    </div>
+                    <div class="cart-price">
+                        <span class="cart-price__value">99 000</span>
+                        <span class="cart-price__currency">₽</span>
+                    </div>
+                </div>
+                <div class="cart__bottom">
+                    <button class="cart__submit" type="button">В корзину</button>
+                </div>
+            </div>
+
+        </div>
+        <div class="buttons">
+            <a href="#" class="basket">
+                <span class="basket__text">Корзина </span>
+                <span class="basket__count">0</span>
+            </a>
+
+            <div class="clear-basket">
+                <button class="clear-basket__btn" type="button">Очистить корзину</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="basket-delimeter">
+
+<section class="basket-result">
+    <div class="container">
+        <h1>Корзина</h1>
+        <div class="basket-hide empty-basket-message">
+            В корзине пока ничего нет
+        </div>
+        <div class="table-scroll-container">
+            <table class="basket-table basket-table-container">
+                <thead>
+                <tr>
+                    <td>№</td>
+                    <td>Артикул</td>
+                    <td>Фото</td>
+                    <td>Название</td>
+                    <td>Марка</td>
+                    <td>Цена</td>
+                    <td>Количество</td>
+                    <td>Сумма</td>
+                    <td>Удалить</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="basket-table-row basket-hide">
+                    <td class="number-container"></td>
+                    <td class="art-container"></td>
+                    <td class="pic-container"></td>
+                    <td class="name-container"></td>
+                    <td class="mark-container"></td>
+                    <td class="price-container"></td>
+                    <td class="amount-container"></td>
+                    <td class="sum-container"></td>
+                    <td class="remove-container">
+                        <button class="remove-basket-btn" type="button">×</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</section>
+
 
 <script src="js/main.js"></script>
+<script>
+    window.onload = function() {
+        var divModels = document.querySelector('.div-models');
+
+        var divOptions = divModels.querySelectorAll('.cart-model__option');
+
+        divOptions.forEach(function(item, i) {
+           item.addEventListener('click', selectDiv);
+        });
+
+        function selectDiv() {
+            divOptions.forEach(function (item, i) {
+                item.classList.remove('selected');
+            });
+            this.classList.add('selected');
+        }
+    }
+</script>
 
 <script>
-	var basket = new SmartBasket({
-	    wrapper: '.cart',
-		name: '.cart__name',
-	    art: '.cart-art__value',
-		submitBtn: '.cart__submit',
-		basket: '.basket__count'
-	});
+    var basket = new SmartBasket({
+        wrapper: '.cart',
+        name: '.cart__name',
+        art: '.cart-art__value',
+        submitBtn: '.cart__submit',
+        basket: '.basket__count',
+        pic: '.cart__pic',
+        amount: '.cart-count input',
+        mark: '.cart-model__select',
+        markOption: '.cart-model__div',
+        markSelectedClass: 'selected',
+        price: '.cart-price__value',
+        currency: '.cart-price__currency',
+        clearBtn: '.clear-basket__btn',
+        numberContainer: '.number-container',
+        picContainer: '.pic-container',
+        artContainer: '.art-container',
+        nameContainer: '.name-container',
+        markContainer: '.mark-container',
+        priceContainer: '.price-container',
+        amountContainer: '.amount-container',
+        sumContainer: '.sum-container',
+        removeContainer: '.remove-container',
+        validateByMark: 'on'
+    });
+/**/
 </script>
 </body>
 </html>

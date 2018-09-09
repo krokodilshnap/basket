@@ -1,0 +1,42 @@
+
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=cyrillic,cyrillic-ext,latin-ext');
+
+/* roboto-mono-regular - latin_cyrillic */
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/roboto-mono-v5-latin_cyrillic-regular.eot'); /* IE9 Compat Modes */
+  src: local('Roboto Mono'), local('RobotoMono-Regular'),
+  url('../fonts/roboto-mono-v5-latin_cyrillic-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/roboto-mono-v5-latin_cyrillic-regular.woff2') format('woff2'), /* Super Modern Browsers */
+  url('../fonts/roboto-mono-v5-latin_cyrillic-regular.woff') format('woff'), /* Modern Browsers */
+  url('../fonts/roboto-mono-v5-latin_cyrillic-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+  url('../fonts/roboto-mono-v5-latin_cyrillic-regular.svg#RobotoMono') format('svg'); /* Legacy iOS */
+}
+/* roboto-mono-500 - latin_cyrillic */
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/roboto-mono-v5-latin_cyrillic-500.eot'); /* IE9 Compat Modes */
+  src: local('Roboto Mono Medium'), local('RobotoMono-Medium'),
+  url('../fonts/roboto-mono-v5-latin_cyrillic-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/roboto-mono-v5-latin_cyrillic-500.woff2') format('woff2'), /* Super Modern Browsers */
+  url('../fonts/roboto-mono-v5-latin_cyrillic-500.woff') format('woff'), /* Modern Browsers */
+  url('../fonts/roboto-mono-v5-latin_cyrillic-500.ttf') format('truetype'), /* Safari, Android, iOS */
+  url('../fonts/roboto-mono-v5-latin_cyrillic-500.svg#RobotoMono') format('svg'); /* Legacy iOS */
+}
+/* roboto-mono-700 - latin_cyrillic */
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/roboto-mono-v5-latin_cyrillic-700.eot'); /* IE9 Compat Modes */
+  src: local('Roboto Mono Bold'), local('RobotoMono-Bold'),
+  url('../fonts/roboto-mono-v5-latin_cyrillic-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/roboto-mono-v5-latin_cyrillic-700.woff2') format('woff2'), /* Super Modern Browsers */
+  url('../fonts/roboto-mono-v5-latin_cyrillic-700.woff') format('woff'), /* Modern Browsers */
+  url('../fonts/roboto-mono-v5-latin_cyrillic-700.ttf') format('truetype'), /* Safari, Android, iOS */
+  url('../fonts/roboto-mono-v5-latin_cyrillic-700.svg#RobotoMono') format('svg'); /* Legacy iOS */
+}
