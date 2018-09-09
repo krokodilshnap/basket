@@ -10,6 +10,8 @@
   &-table {
     border-collapse: collapse;
     width: 100%;
+    min-width: 800px;
+    max-width:  1300px;
     thead {
       td {
         padding: 15px 0;
@@ -38,6 +40,8 @@
   }
 
   &-result {
+    font-family: "PT Sans";
+    padding-top: 10px;
     h1 {
       font-size: 28px;
       font-weight: 600;
@@ -46,5 +50,10 @@
     }
   }
 
+}
+
+.table-scroll-container {
+  overflow-x: auto;
+  width: 100%;
 }
 

@@ -18,7 +18,7 @@ function SmartBasket(options) {
 
         if (target.closest(options.wrapper)) {
             wrapper = target.closest(options.wrapper);
-            art = wrapper.querySelector(options.art);
+            art = wrapper.querySelector(options.art) || 0;
             picture = wrapper.querySelector(options.pic);
             name = wrapper.querySelector(options.name);
             amount = wrapper.querySelector(options.amount);
@@ -30,7 +30,7 @@ function SmartBasket(options) {
 
             data = {
                 characters: {
-                    art: art.textContent,
+                    art: getArt(art),
                     name: name.textContent,
                     mark: getSelectedMark(mark),
                     price: price.innerHTML,
@@ -70,6 +70,11 @@ function SmartBasket(options) {
 
     };
 
+    //Получение артикула
+    function getArt(elem) {
+        return elem ? elem.textContent : "-";
+    }
+
     //Валюта
     function getCurrency(elem) {
         return elem ? elem.innerHTML : "";
@@ -81,27 +86,6 @@ function SmartBasket(options) {
         addToBasketContainer(options);
         countBasket();
     }
-
-    //Получение картинки товара из img
-
-
-    //Сообщение "В корзине пока ничего нет"
-    //basket-table-container обязательный класс для контейнера таблицы корзины
-    // function showEmptyMassage() {
-    //     for (var key in localStorage) {
-    //
-    //         if (!localStorage.hasOwnProperty(key)) continue;
-    //
-    //         if (key.indexOf(basketItemId) != -1) {
-    //             console.log('if')
-    //             basketTable.classList.remove('basket-hide');
-    //
-    //         } else {
-    //             console.log('else')
-    //             basketTable.classList.add('basket-hide');
-    //         }
-    //     }
-    // }
 
 
     //Создание кнопки удаления на случай если пользователь не задал собственный шаблон
@@ -132,6 +116,9 @@ function SmartBasket(options) {
 
     //Получение картинки из background
     function getPictureUrl(elem) {
+
+        if (!elem) return;
+
         var style = elem.style.backgroundImage || elem.firstElementChild.src;
 
         return style.replace(/(url\(|\)|")/g, '');
@@ -351,6 +338,8 @@ function SmartBasket(options) {
                 for (var b in buffer[key][a]) {
                     var span = document.createElement('span');
                     span.innerHTML = buffer[key]['characters']['currency'];
+
+                    if (!data[a][b]) continue;
 
                     if (b == 'picture') {
                         var div = document.createElement('div');
