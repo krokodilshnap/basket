@@ -8,8 +8,8 @@ function SmartBasket(options) {
 
     var basket = document.querySelector(options.basket);
     var clearBtn = document.querySelector(options.clearBtn);
-    var removeBtn = document.querySelector(options.removeContainer).firstElementChild || getRemoveBtn();
-    
+    // var removeBtn = document.querySelector(options.removeContainer).firstElementChild || getRemoveBtn();
+
     countBasket();
     // showEmptyMassage();
 
@@ -19,12 +19,12 @@ function SmartBasket(options) {
         if (target.closest(options.wrapper)) {
             wrapper = target.closest(options.wrapper);
             art = wrapper.querySelector(options.art) || 0;
-            picture = wrapper.querySelector(options.pic);
-            name = wrapper.querySelector(options.name);
-            amount = wrapper.querySelector(options.amount);
-            mark = wrapper.querySelector(options.mark);
-            price = wrapper.querySelector(options.price);
-            submit = wrapper.querySelector(options.submitBtn);
+            picture = wrapper.querySelector(options.pic) || 0;
+            name = wrapper.querySelector(options.name) || 0;
+            amount = wrapper.querySelector(options.amount) || 0;
+            mark = wrapper.querySelector(options.mark) || 0;
+            price = wrapper.querySelector(options.price) || 0;
+            submit = wrapper.querySelector(options.submitBtn) || 0;
             currency = wrapper.querySelector(options.currency) || 0;
 
 
@@ -42,7 +42,7 @@ function SmartBasket(options) {
                 total: {
                     amount: parseFloat(amount.value),
                     price: getTotalPrice(price, amount),
-                    remove: removeBtn.outerHTML
+                    remove: getRemoveBtn()
                 }
 
             };
@@ -90,13 +90,27 @@ function SmartBasket(options) {
 
     //Создание кнопки удаления на случай если пользователь не задал собственный шаблон
     function getRemoveBtn() {
-            var btn = document.createElement('button');
+        var removeBtn;
+        try {
+            var removeBtn = document.querySelector(options.removeContainer).firstElementChild;
+        } catch {
 
-            btn.classList.add('remove-basket-btn');
-            btn.setAttribute('type', 'button');
-            btn.innerHTML = '×';
 
-            return btn;
+            var removeBtn = document.createElement('button');
+
+            removeBtn.classList.add('remove-basket-btn');
+            removeBtn.setAttribute('type', 'button');
+            removeBtn.innerHTML = '×';
+
+        }
+
+        return removeBtn.outerHTML;
+
+
+
+
+
+
 
     }
 
@@ -201,7 +215,7 @@ function SmartBasket(options) {
         basket.innerHTML = localStorageCount();
     }
 
-    
+
     // Добавление объекта в LocalStorage
     function toBasket(object) {
 
