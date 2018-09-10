@@ -1,0 +1,65 @@
+.basket-pic-wrapper {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+
+.basket-error {
+  border: 1px solid red;
+}
+
+.remove-basket-btn {
+  -webkit-border-radius: 30px;
+  border-radius: 30px;
+  background-color: transparent;
+  font-size: 18px;
+  width: 30px;
+  color: #636369;
+  border: 1px solid #c2c1d0;
+  height: 30px;
+  text-align: center;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.remove-basket-btn:hover {
+  color: #fff;
+  background-color: #c2c1d0;
+}
+
+.empty-basket-message {
+  color: #e16036;
+}
+
+.basket-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.basket-table thead td {
+  padding: 15px 0;
+  font-size: 12px;
+  font-family: Arial;
+  border: 1px solid #c2c1d0;
+  font-weight: 600;
+  text-align: center;
+}
+
+.basket-table tbody tr,
+.basket-table tbody td {
+  border: 1px solid #c2c1d0;
+}
+
+.basket-table tbody td {
+  padding: 15px 0;
+  text-align: center;
+}
+
+.basket-hide {
+  display: none;
+}

@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+@import "components/fonts.scss";
+@import "helpers/vars.scss";
+@import "components/smartGrid.scss";
+@import "pages/home.scss";
+@import "layouts/basket.scss";
+@import "components/smartBasket.scss";
+
+@include reset();
+
+body {
+  padding: 30px;
+  font-family: $font;
+
+}
+
+button {
+  outline: none;
+  cursor: pointer;
+}
+
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+
