@@ -46,7 +46,7 @@ gulp.task('clear', function () {
 });
 
 gulp.task('plugin-css', function() {
-    return gulp.src('app/scss/smartBasket.scss')
+    return gulp.src('app/scss//_smartBasket.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer(['last 15 versions'], {cascade: true}))
         .pipe(gcmq())
