@@ -13,7 +13,8 @@ Smart Basket позволяет сформировать таблицу зака
 Для использования Smart Basket в своем проекте достаточно лишь скопировать репозиторий с помощью Git Bush, использую команду ниже:
 
     git clone https://github.com/krokodilshnap/basket.git
-Также можно скачать архив .zip из GitHub, нажав на клавишу![enter image description here](https://lh3.googleusercontent.com/Wszy5I_B_9sVJNyeqS5lr-WhD_LkyBybpzpOQL7JfBk2T5OH-ybLrukG0fBmlkHk2rEXVz9ZHEjM)
+Также можно скачать архив .zip из GitHub, нажав на клавишу
+![enter image description here](https://lh3.googleusercontent.com/Wszy5I_B_9sVJNyeqS5lr-WhD_LkyBybpzpOQL7JfBk2T5OH-ybLrukG0fBmlkHk2rEXVz9ZHEjM)
 
 > Необходимо использовать файлы только из папки /dist
 
